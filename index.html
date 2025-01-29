@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos Clássicos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('datetime').textContent = now.toLocaleString();
+        }
+        setInterval(updateDateTime, 1000);
+
+        function updateCounter() {
+            if (localStorage.getItem('visitCount')) {
+                let count = parseInt(localStorage.getItem('visitCount'));
+                count++;
+                localStorage.setItem('visitCount', count);
+            } else {
+                localStorage.setItem('visitCount', 1);
+            }
+            document.getElementById('visit-counter').textContent = "Visitas: " + localStorage.getItem('visitCount');
+        }
+    </script>
+</head>
+<body onload="updateDateTime(); updateCounter();">
+    <h1>Jogos Clássicos</h1>
+    <div id="datetime"></div>
+    <div id="visit-counter"></div>
+    <div class="container">
+        <div class="game-card">
+            <h2>Tetris</h2>
+            <p>Empilhe os blocos e não deixe a tela encher!</p>
+            <a href="https://tetris.com/play-tetris" target="_blank">Jogar</a>
+        </div>
+        <div class="game-card">
+            <h2>Snake</h2>
+            <p>Controle a cobra e coma os pontos sem bater na parede!</p>
+            <a href="https://playsnake.org/" target="_blank">Jogar</a>
+        </div>
+        <div class="game-card">
+            <h2>Pac-Man</h2>
+            <p>Coma os pontos e fuja dos fantasmas!</p>
+            <a href="https://www.google.com/logos/2010/pacman10-i.html" target="_blank">Jogar</a>
+        </div>
+    </div>
+    <div class="suggestion-box">
+        <h2>Sugira um Jogo</h2>
+        <input type="text" id="gameSuggestion" placeholder="Digite o nome do jogo">
+        <button onclick="alert('Sugestão enviada!')">Enviar</button>
+    </div>
+    <div class="contact-box">
+        <h2>Contato</h2>
+        <p>Entre em contato pelo e-mail:</p>
+        <p><a href="mailto:seuemail@example.com">seuemail@example.com</a></p>
+    </div>
+</body>
+</html>
